@@ -2,6 +2,13 @@
 
 `raylea.echo` 为 RayleaBot 提供回显命令与消息链路验证能力。插件以独立 Go 模块发布，生产包由本仓库的 GitHub Actions 构建，不随 RayleaBot 主程序打包。
 
+## 目录结构
+
+- `cmd/echo/`：只负责启动进程。
+- `internal/plugin/`：插件协议处理、业务逻辑和测试。
+- `tools/build/`：调用 RayleaBot SDK 构建三平台 artifact。
+- `info.json`：插件能力与发布元数据。
+
 ## 本地联调
 
 将本仓库路径写入 RayleaBot 根目录下被忽略的 `plugin-workspace.local.json`，然后运行：

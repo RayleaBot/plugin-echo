@@ -1,22 +1,17 @@
-package main
+package plugin
 
 import (
 	"context"
-	"os"
 	"strings"
 
 	rayleabot "github.com/RayleaBot/RayleaBot/sdk/go"
 )
 
-func main() {
-	err := rayleabot.Run(context.Background(), rayleabot.Options{
+func Run(ctx context.Context) error {
+	return rayleabot.Run(ctx, rayleabot.Options{
 		PluginID:      "raylea.echo",
 		Subscriptions: []string{"message.group", "message.private"},
 	}, rayleabot.HandlerFunc(handleEvent))
-	if err != nil {
-		_, _ = os.Stderr.WriteString(err.Error() + "\n")
-		os.Exit(1)
-	}
 }
 
 func handleEvent(_ context.Context, event *rayleabot.EventContext) error {
