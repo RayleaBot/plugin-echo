@@ -18,7 +18,7 @@
     {
       "name": "echo",
       "description": "复读收到的内容",
-      "usage": "/echo <内容>",
+      "usage": "/echo [内容]",
       "permission": "everyone"
     }
   ]
