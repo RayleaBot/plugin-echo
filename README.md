@@ -105,7 +105,7 @@ go run github.com/RayleaBot/RayleaBot/sdk/go/cmd/raylea-plugin build-go --plugin
 
 ### 发布
 
-`v*` 标签对应的发布工作流使用固定的 RayleaBot SDK 引用构建 Windows x64、Linux x64 和 macOS arm64 包，并创建 GitHub Release。[plugin-catalog](https://github.com/RayleaBot/plugin-catalog) 记录各平台 ZIP 与 manifest 的 SHA-256；RayleaBot 插件商店只消费签名目录。
+`v*` 标签对应的发布工作流使用固定的 RayleaBot SDK 引用构建 Windows x64、Linux x64 和 macOS arm64 包，并创建 GitHub Release。[plugin-catalog](https://github.com/RayleaBot/plugin-catalog) 定时读取当前 Release，校验 artifact 并记录各平台 ZIP 的 SHA-256。
 
 本地联调与商店分发说明见 [插件商店与独立开发](https://github.com/RayleaBot/RayleaBot/blob/main/docs/plugin/store-and-development.md)。
 
