@@ -1,25 +1,35 @@
 {
   "id": "raylea.echo",
   "name": "Echo",
-  "version": "0.2.2",
-  "manifest_version": "2",
-  "plugin_protocol_version": "1",
-  "runtime": "go",
-  "entry": "bin/echo",
-  "platforms": ["windows-x64", "linux-x64", "macos-arm64"],
+  "version": "0.3.0",
+  "manifest_version": "3",
   "license": "MIT",
-  "description": "Built-in test echo command",
-  "author": "raylea",
-  "capabilities": [
-    "event.subscribe",
-    "message.send"
-  ],
+  "min_core_version": "0.4.0",
+  "metadata": {
+    "description": "用于验证命令分发、事件处理和消息回复链路的回显插件",
+    "author": "raylea",
+    "repo": "https://github.com/RayleaBot/plugin-echo",
+    "keywords": ["echo", "message"]
+  },
+  "events": ["message.group", "message.private"],
+  "permissions": {
+    "message.send": true
+  },
   "commands": [
     {
+      "id": "echo",
       "name": "echo",
       "description": "复读收到的内容",
       "usage": "/echo [内容]",
-      "permission": "everyone"
+      "permission": "everyone",
+      "trigger": {
+        "type": "exact",
+        "names": ["echo"]
+      }
     }
-  ]
+  ],
+  "help": {
+    "title": "Echo",
+    "summary": "复读收到的聊天内容"
+  }
 }

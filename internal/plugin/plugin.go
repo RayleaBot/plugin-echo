@@ -8,10 +8,7 @@ import (
 )
 
 func Run(ctx context.Context) error {
-	return rayleabot.Run(ctx, rayleabot.Options{
-		PluginID:      "raylea.echo",
-		Subscriptions: []string{"message.group", "message.private"},
-	}, rayleabot.HandlerFunc(handleEvent))
+	return rayleabot.Run(ctx, rayleabot.Options{}, rayleabot.HandlerFunc(handleEvent))
 }
 
 func handleEvent(_ context.Context, event *rayleabot.EventContext) error {

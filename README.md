@@ -67,8 +67,7 @@ RayleaBot 官方插件 · `raylea.echo`
 plugin-echo/
   cmd/echo/              进程入口
   internal/plugin/       协议处理、业务逻辑和测试
-  tools/build/           调用 RayleaBot SDK 构建 artifact
-  info.json              插件能力与发布元数据
+  info.json              manifest v3、权限与发布元数据
 ```
 
 ### 本地联调
@@ -77,10 +76,9 @@ plugin-echo/
 
 ```json
 {
-  "workspace_version": "1",
+  "workspace_version": "2",
   "plugins": [
     {
-      "id": "raylea.echo",
       "path": "../RayleaBotPlugins/plugin-echo"
     }
   ]
@@ -101,7 +99,8 @@ $env:RAYLEA_SERVER_RELOAD = "watch"
 
 ```powershell
 go test -race ./...
-go run ./tools/build -target windows-x64
+$env:RAYLEA_PLUGIN_BUILD_USE_WORKSPACE = "1"
+go run github.com/RayleaBot/RayleaBot/sdk/go/cmd/raylea-plugin build-go --plugin . --backend ./cmd/echo --target windows-x64 --out dist
 ```
 
 ### 发布
